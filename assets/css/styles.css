@@ -1,0 +1,28 @@
+html,body{
+    height: 100%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;   
+    background-color: #111111;
+    color:white;
+    font-family: Ubuntu;
+}
+.header{
+    text-align: center;
+    z-index: 2;
+}
+.header p{
+    text-shadow:-6px -6px 0 blueviolet, 6px 6px 0 indigo;
+    font-size: 3rem;
+}
+.header h1{
+    font-size: 4rem;
+    margin: -20px;
+}
+.header a{
+    transition: 0.3s;
+    color: white !important;
+}
