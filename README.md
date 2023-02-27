@@ -1,2 +1,2 @@
 # stremty.space
-<p>🌌• <a href="https://stremty.space"></p>
+<p>🌌• https://stremty.space</p>
