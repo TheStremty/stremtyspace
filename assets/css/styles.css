@@ -26,3 +26,33 @@ body{
     transition: 0.3s;
     color: white !important;
 }
+.aboutme{
+    margin-top:245px;
+    position: absolute;
+    font-size:24px;
+}
+.editor {
+    margin-top:500px;
+    justify-content: center;
+    z-index: 2;
+    position: absolute;
+    width: 720px;
+    max-width: 720px;
+    height: 225px;
+    box-shadow: 0 7px 7px rgba(0, 0, 0, .1), 0 -2px 3px rgba(0, 0, 0, .125);
+ }
+ 
+ .editor__code {
+    position: relative;
+    border: none;
+    flex-basis: 70%;
+ }
+ 
+ .editor__code > *{
+    box-shadow: 0 0 25px indigo;
+    position: absolute;
+    width: 720px;
+    max-width: 720px;
+    height: 225px;
+ }
+ 
