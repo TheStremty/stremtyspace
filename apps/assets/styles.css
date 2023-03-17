@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    background-position: center center;
+    font-family: Arial, sans-serif;
+    transition: 3s;
+}
+h2{
+    color: white;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.block {
+    color: gray;
+    background-color: #111;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 20px 0px #151515;
+    border-radius: 10px;
+    cursor: move;
+    position: absolute; /* added to enable dragging */
+}
+
+.block-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    cursor: pointer;
+}
+
+.block-text {
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+#block-input {
+    box-shadow: 0px 0px 20px 0px #151515;
+    font-size: 24px;
+    color:white;
+    background: #171717;
+    border-radius: 10px;
+    position: fixed;
+    padding: 10px;
+    width: 720px;
+    height: 50px;
+    bottom: 10px;
+    margin: 10px;
+    border: none;
+  }
+button {
+    box-shadow: 0px 0px 20px 0px #151515;
+    border: none;
+}
+button:hover{
+    transition: 0.3s;
+}
+#export-btn {
+    font-size: 24px;
+    color:gray;
+    background: #171717;
+    border-radius: 10px;
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    bottom: 10px;
+    right: 10px;
+    margin: 10px;
+}
+#export-btn:hover {
+    background-color: #111;
+}
+#import-btn {
+    font-size: 24px;
+    color:gray;
+    background: #171717;
+    border-radius: 10px;
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    bottom: 10px;
+    right: 120px;
+    margin: 10px;
+}
+#import-btn:hover {
+    background-color: #111;
+}
+
+
+#add-block-btn {
+    font-size: 24px;
+    color:gray;
+    background: #171717;
+    border-radius: 10px;
+    position: fixed;
+    width: 100px;
+    height: 50px;
+    bottom: 10px;
+    right: 230px;
+    margin: 10px;
+}
+#add-block-btn:hover {
+    background-color: #111;
+}
+
+*:focus {
+    outline: none;
+}
