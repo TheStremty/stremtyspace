@@ -154,6 +154,7 @@ importBtn.addEventListener('click', () => {
         block.appendChild(text);
 
         container.appendChild(block);
+        blockCount++;
       });
     };
     reader.readAsText(file);
