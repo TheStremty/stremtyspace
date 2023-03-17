@@ -117,6 +117,7 @@ importBtn.addEventListener('click', () => {
     reader.onload = (readerEvent) => {
       const content = readerEvent.target.result;
       const blocksData = JSON.parse(content);
+      ClearBlocks();
       blocksData.forEach((blockData) => {
         const block = document.createElement('div');
         block.classList.add('block');
@@ -168,3 +169,10 @@ function removeBlock(id) {
       block.parentNode.removeChild(block);
     }
   }
+
+function ClearBlocks(){
+  blockCount = 0;
+  const blocks = document.querySelectorAll('.block');
+  blocks.forEach((block) =>{
+    removeBlock(block.id);
+})};
