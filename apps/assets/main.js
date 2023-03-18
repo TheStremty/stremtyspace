@@ -13,6 +13,7 @@ function createBlock() {
     removeBlock(block.id);
   });
   dragElement(block);
+  addBorder(block);
 
   const title = document.createElement('h2');
   title.classList.add('block-title');
@@ -126,6 +127,7 @@ importBtn.addEventListener('click', () => {
         block.style.left = blockData.x + 'px';
         block.style.top = blockData.y + 'px';
         dragElement(block);
+        addBorder(block);
 
         const title = document.createElement('h2');
         title.classList.add('block-title');
@@ -176,3 +178,32 @@ function ClearBlocks(){
   blocks.forEach((block) =>{
     removeBlock(block.id);
 })};
+function changeBlockColor(id, bgColor, titleColor) {
+  const block = document.getElementById(id);
+  if (block) {
+    block.style.backgroundColor = bgColor;
+    block.querySelector('.block-title').style.color = titleColor;
+  }
+}
+let borderPixel = '2px solid';
+function addBorder(block) {
+  let hue = 0; // ustawienie początkowego koloru na 0
+  const intervalId = setInterval(() => { // tworzenie interwału, który zmienia kolor co 10ms
+    block.style.border=borderPixel;
+    block.style.borderColor = `hsl(${hue}, 70%, 50%)`; // ustawienie obramowania o zmieniającym się kolorze
+    hue = (hue + 1) % 360; // zmiana koloru o 1 stopień, gdy osiągnie 360, zacznij od 0
+  }, 32);
+}
+
+function glow(){
+  if (borderPixel != '2px solid'){
+    borderPixel = '2px solid';
+  }
+  else{
+    borderPixel = '0px';
+  }
+}
+const glowBtn = document.querySelector('#glow-btn');
+glowBtn.addEventListener('click', glow);
+//const editBtn = document.querySelector('#edit-btn');
+//editBtn.addEventListener('click', );
