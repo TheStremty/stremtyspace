@@ -2,7 +2,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: #222;
-    background-position: center center;
+    background-image:
+    linear-gradient(#272727 2px, transparent 2px),
+    linear-gradient(90deg, #272727 2px, transparent 2px),
+    linear-gradient(#222222 1px, transparent 1px),
+    linear-gradient(90deg, #222222 1px, transparent 1px);
+    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
     font-family: Arial, sans-serif;
     transition: 3s;
 }
@@ -144,3 +150,5 @@ button:hover{
 #glow-btn:hover {
     background-color: #111;
 }
+
+canvas {display: block;}

@@ -1,7 +1,25 @@
 const container = document.querySelector('.container');
 const addBlockBtn = document.querySelector('#add-block-btn');
 
-let blockCount = 0;
+function uniqueId() {
+  let letters = 'abcdefghijklmnopqrstuvwxyz';
+  let output = '';
+
+  for (let i = 0; i < 5; i++) {
+    let randomLetter = letters.charAt(Math.floor(Math.random() * letters.length));
+    output += randomLetter;
+  }
+
+  for (let i = 0; i < 5; i++) {
+    let randomNumber = Math.floor(Math.random() * 10);
+    output += randomNumber;
+  }
+  console.log(output)
+  return output;
+}
+
+let borderPixel = '2px solid';
+let blockCount = uniqueId();
 
 function createBlock() {
   const block = document.createElement('div');
@@ -45,7 +63,7 @@ function createBlock() {
 
   container.appendChild(block);
 
-  blockCount++;
+  blockCount=uniqueId();
 }
 
 addBlockBtn.addEventListener('click', createBlock);
@@ -83,7 +101,9 @@ function dragElement(elmnt) {
 function exportBlocks() {
   const blocks = document.querySelectorAll('.block');
   const blocksData = [];
-
+  const settings = {
+    glowing: borderPixel,
+  }
   blocks.forEach(block => {
     const blockData = {
       id: block.id,
@@ -94,8 +114,8 @@ function exportBlocks() {
     };
     blocksData.push(blockData);
   });
-
-  const jsonData = JSON.stringify(blocksData);
+  const data = { blocks: blocksData, settings: settings };
+  const jsonData = JSON.stringify(data);
   const jsonDataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonData);
 
   const downloadLink = document.createElement('a');
@@ -117,9 +137,12 @@ importBtn.addEventListener('click', () => {
     const reader = new FileReader();
     reader.onload = (readerEvent) => {
       const content = readerEvent.target.result;
-      const blocksData = JSON.parse(content);
+      const blocksData = JSON.parse(content).blocks;
+      const settingsData = JSON.parse(content).settings;
+      borderPixel = settingsData.glowing; // glowing settings
       ClearBlocks();
-      blocksData.forEach((blockData) => {
+      //saved blocks
+      blocksData.forEach((blockData) => { 
         const block = document.createElement('div');
         block.classList.add('block');
         block.setAttribute('draggable', 'true');
@@ -157,7 +180,7 @@ importBtn.addEventListener('click', () => {
         block.appendChild(text);
 
         container.appendChild(block);
-        blockCount++;
+        blockCount=uniqueId();
       });
     };
     reader.readAsText(file);
@@ -173,7 +196,7 @@ function removeBlock(id) {
   }
 
 function ClearBlocks(){
-  blockCount = 0;
+  blockCount = uniqueId();
   const blocks = document.querySelectorAll('.block');
   blocks.forEach((block) =>{
     removeBlock(block.id);
@@ -185,13 +208,13 @@ function changeBlockColor(id, bgColor, titleColor) {
     block.querySelector('.block-title').style.color = titleColor;
   }
 }
-let borderPixel = '2px solid';
+
 function addBorder(block) {
-  let hue = 0; // ustawienie początkowego koloru na 0
-  const intervalId = setInterval(() => { // tworzenie interwału, który zmienia kolor co 10ms
+  let hue = 0;
+  const intervalId = setInterval(() => {
     block.style.border=borderPixel;
-    block.style.borderColor = `hsl(${hue}, 70%, 50%)`; // ustawienie obramowania o zmieniającym się kolorze
-    hue = (hue + 1) % 360; // zmiana koloru o 1 stopień, gdy osiągnie 360, zacznij od 0
+    block.style.borderColor = `hsl(${hue}, 70%, 50%)`;
+    hue = (hue + 1) % 360;
   }, 32);
 }
 
@@ -207,3 +230,5 @@ const glowBtn = document.querySelector('#glow-btn');
 glowBtn.addEventListener('click', glow);
 //const editBtn = document.querySelector('#edit-btn');
 //editBtn.addEventListener('click', );
+
+//bg
